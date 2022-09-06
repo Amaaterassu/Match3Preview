@@ -15,9 +15,10 @@ public class CandySpawner : MonoBehaviour
         if (SpawnOnStart)
         {
             SpawnRandomCandy();
+            
         }
     }
-
+    
     private List<GameObject> candiesList;
     public void SpawnRandomCandy()
     {
@@ -36,7 +37,7 @@ public class CandySpawner : MonoBehaviour
                 int randomCandy = Random.Range(0, (candiesList.Count - 1));
                 GameObject instanceSpawn = Instantiate(candiesList[randomCandy], parentGameObject);
                 instanceSpawn.transform.localPosition = new Vector3(col * fieldGenerator.spawnHeightSpace, row * fieldGenerator.spawnWidthSpace, zVectorOfFieldPositionMinus1);
-                
+               
             }
         }
     }
