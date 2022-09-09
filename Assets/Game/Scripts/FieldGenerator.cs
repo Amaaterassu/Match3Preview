@@ -1,6 +1,5 @@
 using UnityEngine;
-using System.Collections.Generic;
-using System;
+
 public class FieldGenerator : MonoBehaviour
 {
     public GameObject cellPrefab;
@@ -25,7 +24,7 @@ public class FieldGenerator : MonoBehaviour
     public void Generate()
     {
         int arraySize = 0;
-        ParentsOfCandiesArray = new Transform[rowCount*columnCount];
+        ParentsOfCandiesArray = new Transform[rowCount * columnCount];
 
         for (int col = 0; col < columnCount; col++)
         {
@@ -33,10 +32,18 @@ public class FieldGenerator : MonoBehaviour
             {
                 GameObject instance = Instantiate(cellPrefab, cellParent);
                 instance.transform.localPosition = new Vector3(col * spawnHeightSpace, row * spawnWidthSpace, 0);
-                ParentsOfCandiesArray[arraySize] =  instance.GetComponent<Transform>();
+                ParentsOfCandiesArray[arraySize] = instance.GetComponent<Transform>();
                 arraySize++;
             }
         }
         arraySize = 0;
+    }
+
+    public void ClearFieldImmediate()
+    {
+        if (ParentsOfCandiesArray != null)
+            foreach (var candyParent in ParentsOfCandiesArray)
+                if (candyParent != null)
+                    DestroyImmediate(candyParent.gameObject);
     }
 }

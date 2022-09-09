@@ -19,7 +19,8 @@ public class CandySpawnerUsingFeildGeneratorAsParentEDitor : Editor
 
         if (GUILayout.Button("Spawn"))
         {
-            candySpawnParent.SpawnRandomCandyAsChild();
+            candySpawnParent.ClearFieldImmediate();
+            candySpawnParent.SpawnRandomCandies();
         }
         serializedObject.ApplyModifiedProperties();
     }

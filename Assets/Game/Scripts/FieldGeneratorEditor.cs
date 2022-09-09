@@ -18,7 +18,13 @@ public class FieldGeneratorEditor : Editor
 
         if (GUILayout.Button("Generate"))
         {
+            fieldGenerator.ClearFieldImmediate();
             fieldGenerator.Generate();
+        }
+
+        if (GUILayout.Button("Clear"))
+        {
+            fieldGenerator.ClearFieldImmediate();
         }
 
         serializedObject.ApplyModifiedProperties();
